@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            background-color: #f5f6fa;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .user {
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 16px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+            button:hover {
+                background-color: #005ea6;
+            }
+
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #0078d4;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>Products</h2>
+        <div class="user">
+            Logged in: <span id="username"></span>
+        </div>
+    </div>
+
+    <button onclick="getProducts()">Load Products</button>
+
+    <table id="productsTable" style="display:none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price (₹)</th>
+            </tr>
+        </thead>
+        <tbody id="productsBody"></tbody>
+    </table>
+
+    <script src="https://alcdn.msauth.net/browser/2.37.0/js/msal-browser.min.js"></script>
+    <script src="auth.js"></script>
+    <script src="api.js"></script>
+
+    <script>
+
+        const account = msalInstance.getActiveAccount();
+
+        if (account) {
+            document.getElementById("username").innerText =
+                account.name + " (" + account.username + ")";
+        }
+
+    </script>
+
+</body>
+</html>
